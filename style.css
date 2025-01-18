@@ -1,11 +1,12 @@
 body {
     margin: 0;
     padding: 0;
-   overflow: hidden;
+    overflow: auto;
     font-family: 'Montserrat', sans-serif;
     color: var(--text);
     background: var(--bg);
     transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+    overflow: hidden; 
 }
 
 ul {
@@ -38,9 +39,18 @@ main {
 img {
     margin: 2em 0 0;
     width: 180px;
-    height: 180px;
+    border-radius:50%;
+    opacity:1;
+    animation:moveUpDown 2s ease-in-out infinite;
 }
 
+.logo{
+    box-shadow:2px black;
+}
+
+.border{
+    box-shadow:2px 3px black;
+}
 /* Navbar */
 
 .navbar {
@@ -60,11 +70,10 @@ img {
 
 .dropdown {
     position: fixed;
-    width: 500px;
+    width: 200px;
     opacity: 0;
     z-index: 2;
     background: var(--bg-dropdown);
-    border-top: 2px solid var(--border-color);
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     display: flex;
@@ -73,14 +82,11 @@ img {
     height: 3rem;
     margin-top: 2rem;
     padding: 0.5rem;
-   
     box-shadow: rgba(2, 8, 20, 0.1) 0px 0.175em 0.5em;
-    transform: translateX(-40%);
+    transform: translateX(-50%);
 
     transition: opacity .15s ease-out;
 }
-
-
 .has-dropdown:focus-within .dropdown   {
     opacity: 1;
     pointer-events: auto;
@@ -105,9 +111,20 @@ img {
     vertical-align: middle;
     margin-right: 10px;
 }
+h3{
+    color:var(--gray3);
+    font-weight:bold;
+    text-decoration:underline;
+    letter-spacing:0.1px;
+}
+h3::first-letter{
+    font:uppercase;
+    font-weight:1em;   
+}
 p::first-letter{
-    font-size: 1em;
-    
+    font-size: 1.5em;
+    font-weight:bold;
+    letter-spacing:0.1em;
 }
 
 
@@ -182,6 +199,14 @@ p::first-letter{
     }
 }
 
+@keyframes moveUpDown{
+  0% , 100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-20px);
+  }
+} 
 
 .logo:hover {
     animation: color-rotate 1s;
@@ -194,5 +219,3 @@ header:hover{
     animation-iteration-count: infinite; 
     animation-direction: alternate;
 }
-
-
